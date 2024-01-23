@@ -1,1 +1,3 @@
 cmd/config.yml
+/output
+/db

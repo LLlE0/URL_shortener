@@ -14,12 +14,14 @@ func main() {
 	}
 	server := serv.NewServer()
 	store := serv.NewStore()
+	log.Print("The server started successfully at: " + viper.GetString("ip") + ":" + viper.GetString("port"))
 	server.Run(viper.GetString("port"), viper.GetString("ip"), handler.InitRoutes(store))
+
 }
 
 // handle config file
 func initConfig() error {
-	viper.AddConfigPath("/")
+	viper.AddConfigPath("../configs")
 	viper.SetConfigName("config.yml")
 	viper.SetConfigType("yml")
 	return viper.ReadInConfig()
